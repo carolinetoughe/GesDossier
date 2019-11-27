@@ -53,3 +53,4 @@
 
 
     {!! $ficheanalyses->links() !!}
+    @endsection

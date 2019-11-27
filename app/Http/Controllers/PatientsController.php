@@ -84,7 +84,7 @@ class PatientsController extends Controller
 
         Patient::create($form_data);
 
-        return redirect('patient.liste')->with('success', 'Patient Ajouté correctement.');
+        return view('patient/index')->with('success', 'Patient Ajouté correctement.');
     }
 
     /**

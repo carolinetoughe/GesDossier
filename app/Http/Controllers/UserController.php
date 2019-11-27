@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Jour;
+use App\Disponibilite;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
@@ -89,7 +89,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        $jours= Disponibilite::get();
+        return view('users.show',compact('user','jours'));
     }
 
 

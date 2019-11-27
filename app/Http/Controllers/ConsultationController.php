@@ -25,6 +25,8 @@ class ConsultationController extends Controller
          $this->middleware('permission:consultation-create', ['only' => ['create','store']]);
          $this->middleware('permission:consultation-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:consultation-delete', ['only' => ['destroy']]);
+        $this->middleware('auth:patient');
+
     }
     /**
      * Display a listing of the resource.

@@ -60,10 +60,5 @@ function myFunction() {
     }
   }
 }
-var delete_stud = function(){
-		if(confirm("voulez vous supprimer ce patient?"))
-		{
-			document.getElementById=('deleteForm-{{$row->id }}').submit();
-		}
-	}
+
 </script>

@@ -13,6 +13,10 @@ use Illuminate\Http\Request;
 
 class FicheanalyseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:patient');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -115,6 +119,7 @@ class FicheanalyseController extends Controller
     public function ficheanalyseindex()
     {
         $patient = Auth::guard('patient')->User();
+
         $consultations = $patient->consultations;
         return view('patient/ficheanalyse.index',compact('consultations','patient'));
             

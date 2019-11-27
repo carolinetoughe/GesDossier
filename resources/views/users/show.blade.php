@@ -56,21 +56,5 @@
             @endif
         </div>
     </div>
-    <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Heures de Disponiilites</h3>
-                </div>
-                <div class="panel-body">
-                    @foreach($jours as $jour)
-                        @if($jour->users->count() > 0)
-                            <strong>{{ $jour->name }} :</strong><br> 
-                            <ul>
-                            @foreach($jour->users as $user)
-                                <li>{{ $user->pivot->debut }} à {{ $user->pivot->fin }}</li>
-                            @endforeach
-                            </ul>
-                        @endif
-                    @endforeach
-                </div>
-</div>
+    
 @endsection
