@@ -71,3 +71,4 @@
 
 
     {!! $consultations->links() !!}
+    @endsection

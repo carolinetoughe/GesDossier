@@ -48,7 +48,7 @@
                             @if(auth()->guard('patient')->user()->unreadNotifications->count())
                             @foreach(auth()->guard('patient')->user()->unreadNotifications as $notification )
                            
-                                <a class="dropdown-item" href="{{ route('patient.consultationindex') }} s">
+                                <a class="dropdown-item" href="{{ route('patient.consultationindex') }}">
 
                                 {{ $notification->data['consultation']['motif'] }}
                                 </a>

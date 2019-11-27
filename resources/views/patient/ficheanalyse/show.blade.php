@@ -1,4 +1,4 @@
-@extends('layouts.approle')
+@extends('layouts.apppatient')
 
 
 @section('content')
