@@ -7,6 +7,7 @@ use App\User;
 use App\Repositories\ { FicheRepository, NotificationRepository, ConsultationRepository};
 use App\Notifications\FicheRecevoir;
 use App\Patient;
+use Auth;
 use App\Ficheanalyse;
 use Illuminate\Http\Request;
 
@@ -114,8 +115,8 @@ class FicheanalyseController extends Controller
     public function ficheanalyseindex()
     {
         $patient = Auth::guard('patient')->User();
-        $ficheanalyses = $patient->ficheanalyses()->get();
-        return view('patient/ficheanalyse.index',compact('ficheanalyses','patient'));
+        $consultations = $patient->consultations;
+        return view('patient/ficheanalyse.index',compact('consultations','patient'));
             
     }
     public function ficheanalyseshow($id)

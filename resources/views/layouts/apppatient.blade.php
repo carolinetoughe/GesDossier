@@ -72,7 +72,7 @@
                         
                             <li><a class="nav-link" href="">Mes Ordonnances</a></li>
                         
-                            <li><a class="nav-link" href="">Mes Bons Analyses</a></li>
+                            <li><a class="nav-link" href="{{ url('patient/ficheanalyseindex') }}">Mes Bons Analyses</a></li>
                          
                             <li><a class="nav-link" href="">Mes Hospitalisations</a></li>
                          

@@ -40,5 +40,10 @@ class Patient extends Authenticatable
     {
         return $this->hasMany(Consultation::class);
     }
+    public function ficheanalyses()
+    {
+        return $this->hasMany(Ficheanalyse::class);
+    }
+
 
 }
