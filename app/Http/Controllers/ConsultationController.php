@@ -34,8 +34,7 @@ class ConsultationController extends Controller
     public function index()
     {
         $consultations = Consultation::latest()->paginate(5);
-        return view('consultations.index',compact('consultations'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('consultations.index',compact('consultations'));
     }
 
 
@@ -86,8 +85,8 @@ class ConsultationController extends Controller
         );
 
         Consultation::create($form_data);
-        // $patients=$request->input('patient_id');
-        $patient=Patient::get();
+        $patient_id = $request->patient_id;
+        $patient = Patient::where('id', $patient_id)->get();
 
         if(\Notification::send($patient,new ConsultationNotification(Consultation::latest('id')->first())))
 {

@@ -11,7 +11,7 @@
 </div>
 @endif
 
-<input type="search" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<input type="search" id="myInput" onkeyup="myFunction()" placeholder="Rechercher">
 <table class="table table-bordered table-striped" id="myTable">
  <tr>
   <th width="10%">Image</th>
@@ -27,7 +27,11 @@
    <td>
     <a href="{{ route('patient.show', $row->id) }}" class="btn btn-primary">Voir Plus</a>
     <a href="{{ route('patient.edit', $row->id) }}" class="btn btn-warning">Modifier</a>
-    <a href="#" onclick="delete_stud()">Supprimer</a> </td>
+    <form id="deleteForm-{{$row->id }}" method="POST" action="{{ route('patient.destroy', $row->id) }}" style="display:none;">
+    {{csrf_field()}}
+    {{method_field('delete')}}
+    </form>
+    <button onclick="delete_stud()">Supprimer</button> </td>
    </td>
   </tr>
  @endforeach
@@ -56,10 +60,10 @@ function myFunction() {
     }
   }
 }
-function delete_stud(id){
-		if(window.confirm("voulez vous supprimer ce patient?"))
+var delete_stud = function(){
+		if(confirm("voulez vous supprimer ce patient?"))
 		{
-			location.href="{{ route('patient.destroy', $row->id) }}"+id;
+			document.getElementById=('deleteForm-{{$row->id }}').submit();
 		}
 	}
 </script>

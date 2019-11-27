@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Gestion Dossiers Medicaux') }}</title>
+    <title>{{ config('app.name', 'GesDos') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Gestion Dossiers Medicaux
+                    GesDos
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -48,7 +48,7 @@
                             @if(auth()->guard('patient')->user()->unreadNotifications->count())
                             @foreach(auth()->guard('patient')->user()->unreadNotifications as $notification )
                            
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('patient.consultationindex') }} s">
 
                                 {{ $notification->data['consultation']['motif'] }}
                                 </a>
@@ -67,18 +67,16 @@
                         @guest
                             <li><a class="nav-link" href="{{ route('patient.login') }}">{{ __('Connexion') }}</a></li>
                         @else
-                            <li><a class="nav-link" href="">Gestion Rendez-Vous</a></li>
-                         
-
-                            <li><a class="nav-link" href="">Gestion Resultats Analyses</a></li>
+                            <li><a class="nav-link" href="{{ url('patient/home') }}">Mon Profil</a></li>
+                            <li><a class="nav-link" href="">Mes Rendez-Vous</a></li>
                         
-                            <li><a class="nav-link" href="">Gestion Ordonnances</a></li>
+                            <li><a class="nav-link" href="">Mes Ordonnances</a></li>
                         
-                            <li><a class="nav-link" href="">Gestion Bons Analyses</a></li>
+                            <li><a class="nav-link" href="">Mes Bons Analyses</a></li>
                          
-                            <li><a class="nav-link" href="">Gestion Hospitalisations</a></li>
+                            <li><a class="nav-link" href="">Mes Hospitalisations</a></li>
                          
-                            <li><a class="nav-link" href="{{ route('patient.consultationindex') }}">Gestion Consultations</a></li>
+                            <li><a class="nav-link" href="{{ url('patient/consultationindex') }}">Mes Consultations</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nom }}
@@ -92,7 +90,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Deconnexion') }}
                                     </a>
 
 

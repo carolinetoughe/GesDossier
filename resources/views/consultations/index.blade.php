@@ -35,7 +35,7 @@
 	        <td>{{ $consultation->patient->nom }}</td>
             <td>{{ $consultation->user->name }}</td>
 	        <td>
-                <form action="{{ route('consultations.destroy',$consultation->id) }}" method="POST">
+                <!-- <form action="{{ route('consultations.destroy',$consultation->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('consultations.show',$consultation->id) }}">Afficher Informations</a>
 
 
@@ -44,7 +44,26 @@
                     @can('consultation-delete')
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                     @endcan
+                </form> -->
+
+                <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Plus
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <form action="{{ route('consultations.destroy',$consultation->id) }}" method="POST">
+    @csrf
+                    @method('DELETE')
+    <a class="dropdown-item" href="{{ route('consultations.show',$consultation->id) }}">Voir détails</a>
+    <a class="dropdown-item" href="{{ route('create_fiche', ['consultation' => $consultation->id]) }}">Créer fiche analyse</a>
+    <a class="dropdown-item" href="#">Créer Ordonnance</a>
+                  
+                    @can('consultation-delete')
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                    @endcan
                 </form>
+  </div>
+</div>
 	        </td>
 	    </tr>
 	    @endforeach

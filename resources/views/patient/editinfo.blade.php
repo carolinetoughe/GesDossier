@@ -1,6 +1,5 @@
-@extends('patient/parent')
-
-@section('main')
+@extends('layouts.apppatient')
+@section('content')
             
             @if ($errors->any())
                 <div class="alert alert-danger">

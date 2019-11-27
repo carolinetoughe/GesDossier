@@ -192,7 +192,7 @@ class PatientsController extends Controller
      */
     public function destroy($id)
     {
-       $data = Patient::findOrFail($id);
+       $data = Patient::find($id);
         $data->delete();
 
         return redirect('patient.liste')->with('success', 'Patient supprime');

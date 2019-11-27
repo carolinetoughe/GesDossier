@@ -45,17 +45,26 @@ class FicheanalyseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'date' => 'required',
-            'consultation_id' => 'required',
-            'analyse_id'=>'required',
+          
+            'analyses'=>'required',
         ]);
         $input = $request->all();
-        $analyses=Analyse::get('analyses');
+
+        $analyses_id = $request->analyses;
         $ficheanalyses = Ficheanalyse::create($input);
+        $analyses = Analyse::whereIn('id', $analyses_id)->get();
         $ficheanalyses->analyses()->sync($analyses);
+       
 
         return redirect()->route('ficheanalyses.index')
                     ->with('success','nouvelle fiche analyse creee.');
+    }
+
+    public function createFiche(Consultation $consultation){
+
+        $users = User::get();
+        $analyses = Analyse::get();
+        return view('ficheanalyses.create',compact('analyses','consultation','users'));
     }
 
     /**
@@ -102,13 +111,21 @@ class FicheanalyseController extends Controller
     {
         //
     }
-    public function recevoir(Request $request, Ficheanalyse $fiche)
-{
-    $this->ficheRepository->setFiceRecevoir ($fiche);
-    $patient = Auth::guard('patient')->User();
-    
-    $notificationRepository->deleteDuplicate($patient, $fiche);
-    $fiche->patient->notify(new FicheRecevoir($fiche, $request->value, $patient->id));
-    return redirect()->route('patient.home');
-}
+    public function ficheanalyseindex()
+    {
+        $patient = Auth::guard('patient')->User();
+        $ficheanalyses = $patient->ficheanalyses()->get();
+        return view('patient/ficheanalyse.index',compact('ficheanalyses','patient'));
+            
+    }
+    public function ficheanalyseshow($id)
+    {
+        $patient = Auth::guard('patient')->User();
+        // $consultations = $patient->consultations()->get();
+        $ficheanalyses = Ficheanalyse::findOrFail($id);
+         
+        return view('patient/ficheanalyse.show',compact('ficheanalyses','patient'));
+
+        
+    }
 }

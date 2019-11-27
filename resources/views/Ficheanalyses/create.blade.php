@@ -26,36 +26,35 @@
     @endif
 
 
-    <form action="{{ route('ficheanalyses.store') }}" method="POST">
+    <form action="" method="POST">
     	@csrf
-
 
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
 		        <div class="form-group">
 		            <strong>Date:</strong>
-		            <input type="date" name="date" class="form-control">
+		            <input  type="text" name="date" class="form-control" value="{{$consultation->date}}">
 		        </div>
 		    </div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-            <label for="consultation_id" class="col-md-4 control-label">Id Consultation :</label>
-                            
-                            <select name="consultation_id" class="form-control">
-                                @foreach($consultations as $consultation)
-                                    <option value="{{ $consultation->id }}">{{ $consultation->id }}</option>
-                                @endforeach
-                            </select>
+            <label for="consultation_id" class="col-md-4 control-label">Consultation :</label>
+
+                    
+                    <input  type="text" name="consultation_id" id="" value="{{isset($consultation) ? $consultation->id : 'ttttt'}}">
+                         
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
             <strong>Analyses:</strong>
             <br/>
-            @foreach($analyses as $value)
-                <label>{{ Form::checkbox('analyse_id[]', $value->id, false, array($value, (array) Analyse::old('analyses'))) . ' ' . __('analyses.' . $value) }}
-                {{ $value->nom }} </label>
-            <br/>
+
+            @foreach($analyses as $analyse)
+                <input type="checkbox" name="analyses[]" id="{{ $analyse->nom }}" value="{{ $analyse->id }}">
+                <label for="{{ $analyse->nom }}">{{ $analyse->nom }}</label>
+                <br>
             @endforeach
+
             </div>
           
 		    <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\AnalyseController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,7 +40,7 @@ Route::get('patient-password/reset/{token}','Patient\ResetPasswordController@sho
 Route::get('patient/create', 'PatientsController@create')->name('patient.create');
 Route::post('patient/create', 'PatientsController@store');
 
-Route::get('patient/liste', 'PatientsController@liste')->name('patient.liste');
+Route::get('patient/index', 'PatientsController@liste')->name('patient.liste');
 
 Route::get('patient/show', 'PatientsController@show')->name('patient.show');
 
@@ -49,6 +50,9 @@ Route::post('patient/edit', 'PatientsController@update');
 Route::get('patient/editinfo', 'PatientsController@editinfo')->name('patient.editinfo');
 Route::get('patient/consultationindex', 'ConsultationController@consultationindex')->name('patient.consultationindex');
 Route::get('patient/consultationshow/{id}', 'ConsultationController@consultationshow')->name('patient.consultationshow');
+
+Route::get('patient/ficheanalyseindex', 'FicheanalyseController@ficheanalyseindex')->name('patient.ficheanalyseindex');
+Route::get('patient/ficheanalyseshow/{id}', 'FicheanalyseController@ficheanalyseshow')->name('patient.ficheanalyseshow');
 
 
 
@@ -62,6 +66,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('disponibilites','DisponibiliteController');
     Route::resource('analyses','AnalyseController');
     Route::resource('ficheanalyses','FicheanalyseController');
+
+    Route::get('/ficheanalyse/{consultation}/create', 'FicheanalyseController@createFiche')->name('create_fiche');
+    Route::post('/ficheanalyse/{consultation}/create', 'FicheanalyseController@store');
 
     Route::name ('notification.')->prefix('notification')->group(function () {
         Route::name ('index')->get ('/', 'NotificationController@index');
