@@ -14,17 +14,19 @@
 use App\Http\Controllers\AnalyseController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/w', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'HomeController@accueil');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/accueil', function () {
-    return view('patient\welcome');
-});
+// Route::get('/accueil', function () {
+//     return view('patient\welcome');
+// });
 
 Route::get('patient/home', 'PatientsController@index')->name('patient.home');
 // Route::delete('posts/{id}', 'PostController@destroy')->name('post-delete');
@@ -66,6 +68,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('disponibilites','DisponibiliteController');
     Route::resource('analyses','AnalyseController');
     Route::resource('ficheanalyses','FicheanalyseController');
+    Route::resource('rdvs','RdvController');
+
 
     Route::get('/ficheanalyse/{consultation}/create', 'FicheanalyseController@createFiche')->name('create_fiche');
     Route::post('/ficheanalyse/{consultation}/create', 'FicheanalyseController@store');

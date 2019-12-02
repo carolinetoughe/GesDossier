@@ -44,6 +44,10 @@ class Patient extends Authenticatable
     {
         return $this->hasMany(Ficheanalyse::class);
     }
+    public function rdvs()
+    {
+        return $this->hasMany(Rdv::class);
+    }
 
 
 }
