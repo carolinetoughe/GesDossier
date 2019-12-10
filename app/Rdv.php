@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rdv extends Model
 {
-    protected $table= 'rdvs';
+    
     protected $fillable = [
-        'code','titre','couleur','start_date','end_date','patient_id'
+        'code','date','patient_id','user_id'
     ];
     public function patient()
 {
     return $this->belongsTo('App\Patient');
+}
+public function user()
+{
+    return $this->belongsTo('App\User');
 }
 }

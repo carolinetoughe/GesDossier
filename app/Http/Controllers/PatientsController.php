@@ -17,6 +17,7 @@ class PatientsController extends Controller
     {
      
     $this->middleware('auth:patient')->except('logout','create','liste','store','show','edit','destroy');
+    $this->middleware('auth')->except('index','editinfo');
     }
 
     /**
@@ -37,13 +38,11 @@ class PatientsController extends Controller
     {
         return view('patient/create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
+    /** Store a newly created resource in storage.
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+    */
     public function store(Request $request)
     {
         $request->validate([
@@ -83,8 +82,8 @@ class PatientsController extends Controller
         );
 
         Patient::create($form_data);
-
-        return view('patient/index')->with('success', 'Patient Ajouté correctement.');
+        
+        return redirect()->route('patient.liste')->with('success', 'Patient ajouté !');
     }
 
     /**
@@ -102,7 +101,7 @@ class PatientsController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -181,7 +180,8 @@ class PatientsController extends Controller
   
         Patient::whereId($id)->update($form_data);
 
-        return redirect('patient')->with('success', 'Informations bien modfiees');
+        return redirect()->route('patient.index')
+        ->with('success','informations bien modifiees');
     }
 
     /**
@@ -194,14 +194,13 @@ class PatientsController extends Controller
     {
        $data = Patient::find($id);
         $data->delete();
-
-        return redirect('patient.liste')->with('success', 'Patient supprime');
+        return redirect()->route('patient.liste')->with('success', 'Patient supprime');
+ 
     }
     public function liste()
     {
         $data = Patient::latest()->paginate(5);
-        return view('patient.index', compact('data'))
-                ->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('patient.index', compact('data'));
     }
     public function editinfo()
     {

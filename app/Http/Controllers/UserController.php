@@ -16,6 +16,16 @@ use Hash;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+     
+    $this->middleware('auth')->except('logout','create','liste','store','show','edit','destroy');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -63,14 +73,14 @@ class UserController extends Controller
         $input = $request->all();
 
         $image = request()->file('image');
-        $path = $image->store('userImage', 'public');
+        $path = $image->store('utiilisateurs', 'public');
         // $new_name = rand() . '.' . $image->getClientOriginalExtension();
         // $image->move(public_path('utilisateurs/'), $new_name);
 
 
         $input['password'] = Hash::make($input['password']);
 
-
+        $input['image'] = $path;
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
@@ -163,5 +173,10 @@ class UserController extends Controller
         User::find($id)->delete();
         return redirect()->route('users.index')
                         ->with('success','User deleted successfully');
+    }
+    public function editinfo()
+    {
+        $data = Auth::guard()->User();
+        return view('users/editinfo', compact('data'));
     }
 }

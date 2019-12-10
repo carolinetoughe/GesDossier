@@ -16,16 +16,19 @@ class CreateRdvsTable extends Migration
         Schema::create('rdvs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('code');
-            $table->string('titre');
-            $table->string('couleur');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('date');
             $table->integer('patient_id');
+            $table->integer('user_id');
             $table->timestamps();
 
             $table->foreign('patient_id')
             ->references('id')
             ->on('patients')
+            ->onDelete('cascade');
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
             ->onDelete('cascade');
         });
     }

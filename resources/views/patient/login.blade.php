@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __(' Patients Connexion') }}</div>
+                <div class="card-header">{{ __('Connexion Patient') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('patient.login') }}">
@@ -45,7 +45,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Souviens toi de moi') }}
+                                        {{ __('Souviens Toi De Moi') }}
                                     </label>
                                 </div>
                             </div>

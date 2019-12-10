@@ -26,7 +26,7 @@
    <td>{{ $row->nom }}</td>
    <td>
     <a href="{{ route('patient.show', $row->id) }}" class="btn btn-primary">Voir Plus</a>
-    <a href="{{ route('patient.edit', $row->id) }}" class="btn btn-warning">Modifier</a>
+    {{-- <a href="{{ route('patient.edit', $row->id) }}" class="btn btn-warning">Modifier</a> --}}
     <form id="deleteForm-{{$row->id }}" method="POST" action="{{ route('patient.destroy', $row->id) }}" style="display:none;">
     {{csrf_field()}}
     {{method_field('delete')}}

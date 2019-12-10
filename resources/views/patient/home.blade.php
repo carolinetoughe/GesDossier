@@ -71,7 +71,7 @@
                             <td>Nom Personne A Contacter </td>
                             <td>{{ $patient->nomurgence }}</td>
                         </tr>
-                        <tr>
+                            <tr>p
                             <td>Numero Personne A Contacter</td>
                             <td>{{ $patient->numerotelephone }}</td>
                         </tr>

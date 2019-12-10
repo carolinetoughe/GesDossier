@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Medilab Free Bootstrap HTML5 Template</title>
+  <title>GesDos</title>
   <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
@@ -149,10 +149,12 @@
 
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-          @foreach ($data as $key => $user)
-            <img src="utilisateurs/{{ $user->image }}" alt="..." class="team-img"/>
+          @foreach ($data as $user)
+            <img src="{{ asset('storage/'.$user->image) }}" alt="..." class="team-img"/>
             <div class="caption">
+        
               <h3>{{ $user->name }}</h3>
+              <h3>{{ $user->prenom }}</h3>
               <p>
       @if(!empty($user->getRoleNames()))
         @foreach($user->getRoleNames() as $v)

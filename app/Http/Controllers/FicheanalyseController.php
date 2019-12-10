@@ -15,7 +15,13 @@ class FicheanalyseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:patient');
+        $this->middleware('permission:bonanalyse-list|bonanalyse-create|bonanalyse-edit|bonanalyse-delete', ['only' => ['index','store']]);
+        $this->middleware('permission:bonanalyse-create', ['only' => ['create','store']]);
+        $this->middleware('permission:bonanalyse-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:bonanalyse-delete', ['only' => ['destroy']]);
+        $this->middleware('auth:patient')->except('index','create','delete','edit','show');
+
+    
     }
     /**
      * Display a listing of the resource.

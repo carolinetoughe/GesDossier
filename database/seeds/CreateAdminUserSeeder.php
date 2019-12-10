@@ -19,7 +19,7 @@ class CreateAdminUserSeeder extends Seeder
             'prenom' => 'christelle',
             'adresse' => 'fann',
             'numerotelephone' => '45',
-            'image' =>'011.jpg',
+            'image' =>'utiilisateurs/Fj8Iuqq4fQ5P0p4aghrdeyM3HOACG7fQ3RoOCdvT.jpeg',
         	'email' => 'etoughe@gmail.com',
             'password' => bcrypt('etoughemdp')
         ]);

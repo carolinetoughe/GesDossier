@@ -48,10 +48,14 @@
                             @if(auth()->guard('patient')->user()->unreadNotifications->count())
                             @foreach(auth()->guard('patient')->user()->unreadNotifications as $notification )
                            
-                                <a class="dropdown-item" href="{{ route('patient.consultationindex') }}">
+                                {{-- <a class="dropdown-item" href="{{ route('patient.consultationindex') }}">
 
-                                {{ $notification->data['consultation']['motif'] }}
+                                {{ $notification->data['consultation']['motif'] }} --}}
                                 </a>
+                                <a class="dropdown-item" href="{{ route('patient.rdvindex') }}">
+
+                                        {{ $notification->data['rdv']['date'] }}
+                                        </a>
                                 @endforeach
                                 @else
                                 <a class="dropdown-item" href="#">
@@ -68,13 +72,12 @@
                             <li><a class="nav-link" href="{{ route('patient.login') }}">{{ __('Connexion') }}</a></li>
                         @else
                             <li><a class="nav-link" href="{{ url('patient/home') }}">Mon Profil</a></li>
-                            <li><a class="nav-link" href="">Mes Rendez-Vous</a></li>
+                            <li><a class="nav-link" href="{{ route('patient.rdvindex')}}">Mes Rendez-Vous</a></li>
                         
-                            <li><a class="nav-link" href="">Mes Ordonnances</a></li>
+                            <li><a class="nav-link" href="{{ route('patient.ordonnanceindex')}}">Mes Ordonnances</a></li>
                         
                             <li><a class="nav-link" href="{{ url('patient/ficheanalyseindex') }}">Mes Bons Analyses</a></li>
-                         
-                            <li><a class="nav-link" href="">Mes Hospitalisations</a></li>
+                    
                          
                             <li><a class="nav-link" href="{{ url('patient/consultationindex') }}">Mes Consultations</a></li>
                             <li class="nav-item dropdown">
@@ -114,4 +117,11 @@
     </div>
 </body>
 </html>
+<script>
+    exportdefault{
+        methods : {
+            MarkAsReadlo
+        }
+    }
+</script>
 

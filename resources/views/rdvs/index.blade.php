@@ -1,30 +1,51 @@
 @extends('layouts/approle')
 
 @section('content')
-<!doctype html>
-<html lang="en">
-<head>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-default">
-        <div class="panel-heading" style="background: #2e6da4; color:white;">
-            Gestion Des Rendez-Vous
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Gestion Des Rendez-Vous</h2>
         </div>
-        <div class="panel-body">
-        {!! $calendar->calendar() !!}
-        {!! $calendar->script() !!}
-        </div>
-        </div>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('rdvs.create') }}"> Creer Nouveau Rendez-Vous</a>
         </div>
     </div>
 </div>
-</body>
-</html>
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
+
+
+<table class="table table-bordered table-striped">
+ <tr>
+  <th width="10%">Code</th>
+  <th width="35%">Date</th>
+  <th width="35%">Nom Patient</th>
+  <th width="35%">Nom Medecin</th>
+
+  <th width="30%">Actions</th>
+ </tr>
+ @foreach($rdvs as $rdv)
+  <tr>
+  <td>{{ $rdv->code}}</td>
+   <td>{{ $rdv->date }}</td>
+   <td>{{ $rdv->patient->nom }}</td>
+   <td>{{ $rdv->user->name }}</td>
+
+   <td>
+                <form action="{{ route('rdvs.destroy',$rdv->id) }}" method="POST">
+               
+                    <a href="{{ route('rdvs.edit', $rdv->id) }}" class="btn btn-warning">Modifier</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+	        </td>
+  </tr>
+ @endforeach
+</table>
+{{-- {!! $rdvs->links() !!} --}}
 @endsection

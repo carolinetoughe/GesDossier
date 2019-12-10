@@ -33,6 +33,34 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                            @if(Auth::check())
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-globe"></i> Notification <span class="badge badge-danger" id="count-notification">{{
+                                        auth()->guard()->user()->unreadNotifications->count()}}
+                                        </span><span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    
+                                @if(auth()->guard()->user()->unreadNotifications->count())
+                                @foreach(auth()->guard()->user()->unreadNotifications as $notification )
+                               
+                                    <a class="dropdown-item" href="{{ route('user.rdvindex') }}">
+    
+                                    {{ $notification->data['rdv']['date'] }}
+                                    </a>
+                                    @endforeach
+                                    @else
+                                    <a class="dropdown-item" href="#">
+                                        Pas De Notification
+                                    </a>
+                                    @endif
+                                </div>
+                            </li>
+    
+    
+    @endif
                         <!-- Authentication Links -->
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
@@ -44,11 +72,9 @@
                         @can('role-list',Role::class)
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Gestion Roles</a></li>
                          @endcan
-                         @can('disponibilite-list',Disponibilite::class)
-                            <li><a class="nav-link" href="{{ route('disponibilites.index') }}">Gestion Horaires</a></li>
-                        @endcan
+                         
                          @can('rdv-list',Rdv::class)
-                            <li><a class="nav-link" href="">Gestion Rendez-Vous</a></li>
+                            <li><a class="nav-link" href="{{ route('rdvs.index') }}">Gestion Rendez-Vous</a></li>
                          @endcan
                          @can('analyse-list',Analyse::class)
                             <li><a class="nav-link" href="{{ route('analyses.index') }}">Gestion Analyses</a></li>
@@ -57,7 +83,7 @@
                             <li><a class="nav-link" href="">Gestion Ordonnances</a></li>
                          @endcan
                          @can('bonanalyse-list',Bonanalyse::class)
-                            <li><a class="nav-link" href="">Gestion Bons Analyses</a></li>
+                            <li><a class="nav-link" href="{{ route('ficheanalyses.index') }}">Gestion Bons Analyses</a></li>
                          @endcan
                          @can('consultation-list',Consultation::class)
                             <li><a class="nav-link" href="{{ route('consultations.index') }}">Gestion Consultations</a></li>
