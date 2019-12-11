@@ -10,6 +10,7 @@ use Auth;
 use App\Notifications\RdvNotification;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 // use MaddHatter\LaravelFullcalendar\Calendar;
 
@@ -25,7 +26,7 @@ class RdvController extends Controller
          $this->middleware('permission:rdv-list|rdv-create|rdv-edit|rdv-delete', ['only' => ['index','show']]);
          $this->middleware('permission:rdv-create', ['only' => ['create','store']]);
          $this->middleware('permission:rdv-delete', ['only' => ['destroy']]);
-         $this->middleware('auth:patient')->except('index','create','delete','edit','show');
+         $this->middleware('auth:patient')->except('index','create','store','delete','edit','show');
 
     }
     /**
@@ -73,23 +74,32 @@ class RdvController extends Controller
 
         );
 
-        Rdv::create($form_data);
+        $rdv = Rdv::create($form_data);
         $patient_id = $request->patient_id;
         $user_id = $request->user_id;
         $patient = Patient::where('id', $patient_id)->get();
         $user = User::where('id', $user_id)->get();
 
 
-        if(\Notification::send($patient,new RdvNotification(Rdv::latest('id')->first())) )
-{
-    if(\Notification::send($user,new RdvNotification(Rdv::latest('id')->first())) )
-    {
-            return redirect()->route('rdvs.index')
-                        ->with('success','nouveau rdv cree.');
+//         if(\Notification::send($patient,new RdvNotification(Rdv::latest('id')->first())) )
+// {
+//     if(\Notification::send($user,new RdvNotification(Rdv::latest('id')->first())) )
+//     {
+//             return redirect()->route('rdvs.index')
+//                         ->with('success','nouveau rdv cree.');
     
-    }     
+//     }     
 
-}     
+// }   
+$collection = collect($patient);
+
+$collection->push($user);
+
+Notification::send($user,new RdvNotification($rdv));
+Notification::send($patient,new RdvNotification($rdv));
+
+return redirect()->route('rdvs.index')
+                        ->with('success','nouveau rdv cree.');
     
     }
 

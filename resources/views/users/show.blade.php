@@ -15,7 +15,8 @@
 
 
 <div class="row">
-<img src="{{ URL::to('/') }}/utilisateurs/{{ $user->image }}" class="img-thumbnail" />
+        <img src="{{ asset('storage/'.$user->image) }}"width="100" height="80"  class="img-thumbnail" />
+
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Name:</strong>

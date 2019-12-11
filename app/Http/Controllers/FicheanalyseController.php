@@ -19,7 +19,7 @@ class FicheanalyseController extends Controller
         $this->middleware('permission:bonanalyse-create', ['only' => ['create','store']]);
         $this->middleware('permission:bonanalyse-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:bonanalyse-delete', ['only' => ['destroy']]);
-        $this->middleware('auth:patient')->except('index','create','delete','edit','show');
+        $this->middleware('auth:patient')->except('index','create','createFiche','store','delete','edit','show');
 
     
     }

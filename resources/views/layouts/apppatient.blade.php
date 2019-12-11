@@ -13,6 +13,18 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .circle-icon {
+    background: #ffc0c0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+    padding: 10px;
+}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -47,13 +59,14 @@
 
                             @if(auth()->guard('patient')->user()->unreadNotifications->count())
                             @foreach(auth()->guard('patient')->user()->unreadNotifications as $notification )
-                           
-                                {{-- <a class="dropdown-item" href="{{ route('patient.consultationindex') }}">
 
-                                {{ $notification->data['consultation']['motif'] }} --}}
+                                {{-- <a class="dropdown-item" href="{{ route('patient.consultationindex') }}"> --}}
+                                
+                    
+                                {{-- {{ $notification->data['consultation']['motif'] }} --}}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('patient.rdvindex') }}">
-
+                                        {{-- {{ $notification }} --}}
                                         {{ $notification->data['rdv']['date'] }}
                                         </a>
                                 @endforeach
@@ -84,7 +97,7 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->nom }}
                                     
-                                    <img src="{{asset('images/'.Auth::user()->image)}}" width="100" height="80"alt="">
+                                    <img src="{{asset('images/'.Auth::user()->image)}}" width="100" height="80"alt="" class="circle-icon">
                                     <span class="caret"></span>
                                 </a>
 

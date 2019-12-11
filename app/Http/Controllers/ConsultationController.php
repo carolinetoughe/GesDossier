@@ -25,7 +25,7 @@ class ConsultationController extends Controller
          $this->middleware('permission:consultation-create', ['only' => ['create','store']]);
          $this->middleware('permission:consultation-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:consultation-delete', ['only' => ['destroy']]);
-         $this->middleware('auth:patient')->except('index','create','delete','edit','show');
+         $this->middleware('auth:patient')->except('index','create','store','delete','edit','show');
         }
        
     /**
@@ -89,13 +89,15 @@ class ConsultationController extends Controller
         Consultation::create($form_data);
         $patient_id = $request->patient_id;
         $patient = Patient::where('id', $patient_id)->get();
+        // Notification::send($patient,new ConsultationNotification(Consultation::latest('id')->first()));
 
-        if(\Notification::send($patient,new ConsultationNotification(Consultation::latest('id')->first())))
-{
+
+//         if(\Notification::send($patient,new ConsultationNotification(Consultation::latest('id')->first())))
+// {
         return redirect()->route('consultations.index')
                     ->with('success','nouvelle consultation cree.');
 
-}     
+// }     
     }
 
 

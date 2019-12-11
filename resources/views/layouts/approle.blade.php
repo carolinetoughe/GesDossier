@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Gestion Dossiers Medicaux') }}</title>
+    <title>{{ config('app.name', 'GesDos') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
@@ -13,6 +13,18 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .circle-icon {
+    background: #ffc0c0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+    padding: 10px;
+}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -47,7 +59,8 @@
                                 @foreach(auth()->guard()->user()->unreadNotifications as $notification )
                                
                                     <a class="dropdown-item" href="{{ route('user.rdvindex') }}">
-    
+                                        {{-- {{ $notification }} --}}
+                                    
                                     {{ $notification->data['rdv']['date'] }}
                                     </a>
                                     @endforeach
@@ -66,34 +79,15 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                         @else
-                        @can('user-list',User::class)
-                            <li><a class="nav-link" href="{{ route('users.index') }}">Gestion Utilisateurs</a></li>
-                        @endcan
-                        @can('role-list',Role::class)
-                            <li><a class="nav-link" href="{{ route('roles.index') }}">Gestion Roles</a></li>
-                         @endcan
-                         
-                         @can('rdv-list',Rdv::class)
-                            <li><a class="nav-link" href="{{ route('rdvs.index') }}">Gestion Rendez-Vous</a></li>
-                         @endcan
-                         @can('analyse-list',Analyse::class)
-                            <li><a class="nav-link" href="{{ route('analyses.index') }}">Gestion Analyses</a></li>
-                         @endcan
-                         @can('ordonnance-list',Ordonnance::class)
-                            <li><a class="nav-link" href="">Gestion Ordonnances</a></li>
-                         @endcan
-                         @can('bonanalyse-list',Bonanalyse::class)
-                            <li><a class="nav-link" href="{{ route('ficheanalyses.index') }}">Gestion Bons Analyses</a></li>
-                         @endcan
-                         @can('consultation-list',Consultation::class)
-                            <li><a class="nav-link" href="{{ route('consultations.index') }}">Gestion Consultations</a></li>
-                         @endcan
-                         @can('patient-list',Patient::class)
-                            <li><a class="nav-link" href="{{ route('patient.liste') }}">Gestion Patients</a></li>
-                         @endcan
+                        
                             <li class="nav-item dropdown">
+                    
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} 
+                                    {{-- <img src="{{asset('images/'.Auth::user()->image)}}" width="100" height="80"alt="" class="circle-icon"> --}}
+        <img src="{{ asset('storage/'.Auth::user()->image) }}"width="100" height="80"  class="circle-icon" />
+        <span class="caret"></span>
+                                  
                                 </a>
 
 
@@ -115,8 +109,251 @@
                 </div>
             </div>
         </nav>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        @guest
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                            {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a> --}}
+                        @else
+        <div class="container">
+            <div class="row">
+              
+                    @can('user-list',User::class)
+                    <a href="{{ route('users.index') }}">
+              <div class="col-lg-3">
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <i class="fa fa-users fa-5x"></i>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">1</p>
+                        <p class="announcement-text">Utilisateurs</p>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="panel-footer announcement-bottom">
+                      <div class="row">
+                        
+                        <div class="col-xs-6 text-right">
+                          {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              @endcan
+              @can('role-list',Role::class)
+              <a href="{{ route('roles.index') }}">
 
+              <div class="col-lg-3">
+                <div class="panel panel-warning">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <i class="fa fa-briefcase fa-5x"></i>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">12</p>
+                        <p class="announcement-text"> Roles</p>
+                      </div>
+                    </div>
+                  </div>
+                 
+                    <div class="panel-footer announcement-bottom">
+                      <div class="row">
+                        
+                        <div class="col-xs-6 text-right">
+                          {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
 
+              @endcan
+                         
+              @can('rdv-list',Rdv::class)
+              <a href="{{ route('rdvs.index') }}">
+
+              <div class="col-lg-3">
+                <div class="panel panel-danger">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <i class="fa fa-calendar fa-5x"></i>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">18</p>
+                        <p class="announcement-text">Rendez-Vous</p>
+                      </div>
+                    </div>
+                  </div>
+                
+                    <div class="panel-footer announcement-bottom">
+                      <div class="row">
+                        
+                        <div class="col-xs-6 text-right">
+                          {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+
+              @endcan
+              @can('analyse-list',Analyse::class)
+              <a href="{{ route('analyses.index') }}">
+
+              <div class="col-lg-3">
+                <div class="panel panel-success">
+                  <div class="panel-heading">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <i class="fa fa-flask fa-5x"></i>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <p class="announcement-heading">3</p>
+                        <p class="announcement-text"> Analyses</p>
+                      </div>
+                    </div>
+                  </div>
+                    <div class="panel-footer announcement-bottom">
+                      <div class="row">
+                        
+                        <div class="col-xs-6 text-right">
+                          {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              @endcan
+
+              @can('ordonnance-list',Ordonnance::class)
+              <a href="{{ route('ordonnances.index') }}">
+        <div class="col-lg-3">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col-xs-6">
+                  <i class="fa fa-medkit fa-5x"></i>
+                </div>
+                <div class="col-xs-6 text-right">
+                  <p class="announcement-heading">1</p>
+                  <p class="announcement-text">Ordonnance</p>
+                </div>
+              </div>
+            </div>
+              <div class="panel-footer announcement-bottom">
+                <div class="row">
+                  
+                  <div class="col-xs-6 text-right">
+                    {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        @endcan
+
+        @can('bonanalyse-list',Bonanalyse::class)
+        <a href="{{ route('ficheanalyses.index') }}">
+  <div class="col-lg-3">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-6">
+            <i class="fa fa-users fa-5x"></i>
+          </div>
+          <div class="col-xs-6 text-right">
+            <p class="announcement-heading">1</p>
+            <p class="announcement-text">bonanalyse</p>
+          </div>
+        </div>
+      </div>
+        <div class="panel-footer announcement-bottom">
+          <div class="row">
+            
+            <div class="col-xs-6 text-right">
+              {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  @endcan
+
+  @can('consultation-list',Consultation::class)
+  <a href="{{ route('consultations.index') }}">
+<div class="col-lg-3">
+<div class="panel panel-info">
+<div class="panel-heading">
+  <div class="row">
+    <div class="col-xs-6">
+      <i class="fa fa-user-md fa-5x"></i>
+    </div>
+    <div class="col-xs-6 text-right">
+      <p class="announcement-heading">1</p>
+      <p class="announcement-text">Consultations</p>
+    </div>
+  </div>
+</div>
+  <div class="panel-footer announcement-bottom">
+    <div class="row">
+      
+      <div class="col-xs-6 text-right">
+        {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+      </div>
+    </div>
+  </div>
+</a>
+</div>
+</div>
+@endcan
+
+@can('patient-list',Patient::class)
+<a href="{{ route('patient.liste') }}">
+<div class="col-lg-3">
+<div class="panel panel-info">
+<div class="panel-heading">
+<div class="row">
+  <div class="col-xs-6">
+    <i class="fa fa-users fa-5x"></i>
+  </div>
+  <div class="col-xs-6 text-right">
+    <p class="announcement-heading">1</p>
+    <p class="announcement-text">Patients</p>
+  </div>
+</div>
+</div>
+<div class="panel-footer announcement-bottom">
+  <div class="row">
+    
+    <div class="col-xs-6 text-right">
+      {{-- <i class="fa fa-arrow-circle-right"></i> --}}
+    </div>
+  </div>
+</div>
+</a>
+</div>
+</div>
+@endcan
+
+            </div><!-- /.row -->
+            </div>
+            @endguest
         <main class="py-4">
             <div class="container">
             @yield('content')
