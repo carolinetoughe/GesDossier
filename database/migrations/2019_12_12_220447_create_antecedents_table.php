@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRdvsTable extends Migration
+class CreateAntecedentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,16 @@ class CreateRdvsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rdvs', function (Blueprint $table) {
+        Schema::create('antecedents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('date');
             $table->integer('patient_id');
-            $table->integer('user_id');
+            $table->string('nom');
+            $table->string('traitement');
             $table->timestamps();
 
             $table->foreign('patient_id')
             ->references('id')
             ->on('patients')
-            ->onDelete('cascade');
-
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
             ->onDelete('cascade');
         });
     }
@@ -39,6 +34,6 @@ class CreateRdvsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rdvs');
+        Schema::dropIfExists('antecedents');
     }
 }

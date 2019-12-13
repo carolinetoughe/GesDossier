@@ -16,17 +16,17 @@
     <style>
         .circle-icon {
     background: #ffc0c0;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     text-align: center;
     line-height: 100px;
     vertical-align: middle;
-    padding: 10px;
+    /* padding: 10px; */
 }
     </style>
 </head>
-<body>
+<body style="background-color: #ddebfa;">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
@@ -49,7 +49,7 @@
                             @if(Auth::check())
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-globe"></i> Notification <span class="badge badge-danger" id="count-notification">{{
+                                    <i class="fa fa-bell fa-4x text-danger"></i><span class="badge badge-danger" id="count-notification">{{
                                         auth()->guard()->user()->unreadNotifications->count()}}
                                         </span><span class="caret"></span>
                                 </a>
@@ -119,7 +119,7 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
                             {{-- <a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a> --}}
                         @else
-        <div class="container">
+        <div class="container" >
             <div class="row">
               
                     @can('user-list',User::class)
@@ -129,10 +129,13 @@
                   <div class="panel-heading">
                     <div class="row">
                       <div class="col-xs-6">
-                        <i class="fa fa-users fa-5x"></i>
+                        <i class="fa fa-users fa-5x text-danger"></i>
                       </div>
                       <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">1</p>
+                        <p class="announcement-heading">{{
+                            DB::table('users')->count()}}
+                          
+                        </p>
                         <p class="announcement-text">Utilisateurs</p>
                       </div>
                     </div>
@@ -157,10 +160,11 @@
                   <div class="panel-heading">
                     <div class="row">
                       <div class="col-xs-6">
-                        <i class="fa fa-briefcase fa-5x"></i>
+                        <i class="fa fa-briefcase fa-5x text-danger"></i>
                       </div>
                       <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">12</p>
+                        <p class="announcement-heading">{{
+                            DB::table('roles')->count()}}</p>
                         <p class="announcement-text"> Roles</p>
                       </div>
                     </div>
@@ -188,10 +192,11 @@
                   <div class="panel-heading">
                     <div class="row">
                       <div class="col-xs-6">
-                        <i class="fa fa-calendar fa-5x"></i>
+                        <i class="fa fa-calendar fa-5x text-danger"></i>
                       </div>
                       <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">18</p>
+                        <p class="announcement-heading">{{
+                            DB::table('rdvs')->count()}}</p>
                         <p class="announcement-text">Rendez-Vous</p>
                       </div>
                     </div>
@@ -218,10 +223,11 @@
                   <div class="panel-heading">
                     <div class="row">
                       <div class="col-xs-6">
-                        <i class="fa fa-flask fa-5x"></i>
+                        <i class="fa fa-flask fa-5x text-danger"></i>
                       </div>
                       <div class="col-xs-6 text-right">
-                        <p class="announcement-heading">3</p>
+                        <p class="announcement-heading">{{
+                            DB::table('analyses')->count()}}</p>
                         <p class="announcement-text"> Analyses</p>
                       </div>
                     </div>
@@ -246,11 +252,12 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <i class="fa fa-medkit fa-5x"></i>
+                  <i class="fa fa-medkit fa-5x text-danger"></i>
                 </div>
                 <div class="col-xs-6 text-right">
-                  <p class="announcement-heading">1</p>
-                  <p class="announcement-text">Ordonnance</p>
+                  <p class="announcement-heading">{{
+                      DB::table('ordonnances')->count()}}</p>
+                  <p class="announcement-text">Ordonnances</p>
                 </div>
               </div>
             </div>
@@ -274,11 +281,12 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-6">
-            <i class="fa fa-users fa-5x"></i>
+            <i class="fa fa-file-text fa-5x text-danger"></i>
           </div>
           <div class="col-xs-6 text-right">
-            <p class="announcement-heading">1</p>
-            <p class="announcement-text">bonanalyse</p>
+            <p class="announcement-heading">{{
+                DB::table('ficheanalyses')->count()}}</p>
+            <p class="announcement-text">Fiches Analyses</p>
           </div>
         </div>
       </div>
@@ -302,10 +310,11 @@
 <div class="panel-heading">
   <div class="row">
     <div class="col-xs-6">
-      <i class="fa fa-user-md fa-5x"></i>
+      <i class="fa fa-user-md fa-5x text-danger"></i>
     </div>
     <div class="col-xs-6 text-right">
-      <p class="announcement-heading">1</p>
+      <p class="announcement-heading">{{
+          DB::table('consultations')->count()}}</p>
       <p class="announcement-text">Consultations</p>
     </div>
   </div>
@@ -330,10 +339,11 @@
 <div class="panel-heading">
 <div class="row">
   <div class="col-xs-6">
-    <i class="fa fa-users fa-5x"></i>
+    <i class="fa fa-id-card-o fa-5x text-danger"></i>
   </div>
   <div class="col-xs-6 text-right">
-    <p class="announcement-heading">1</p>
+    <p class="announcement-heading">{{
+        DB::table('patients')->count()}}</p>
     <p class="announcement-text">Patients</p>
   </div>
 </div>

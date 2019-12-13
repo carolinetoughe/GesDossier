@@ -64,11 +64,11 @@
                                 
                     
                                 {{-- {{ $notification->data['consultation']['motif'] }} --}}
-                                </a>
-                                <a class="dropdown-item" href="{{ route('patient.rdvindex') }}">
+                                {{-- </a> --}}
+                                {{-- <a class="dropdown-item" href="{{ route('patient.rdvindex') }}"> --}}
                                         {{-- {{ $notification }} --}}
-                                        {{ $notification->data['rdv']['date'] }}
-                                        </a>
+                                        {{-- {{ $notification->data['rdv']['date'] }} --}}
+                                        {{-- </a> --}}
                                 @endforeach
                                 @else
                                 <a class="dropdown-item" href="#">
@@ -85,6 +85,8 @@
                             <li><a class="nav-link" href="{{ route('patient.login') }}">{{ __('Connexion') }}</a></li>
                         @else
                             <li><a class="nav-link" href="{{ url('patient/home') }}">Mon Profil</a></li>
+                            <li><a class="nav-link" href="{{ route('antecedents.index')}}">Mes Antecedents</a></li>
+
                             <li><a class="nav-link" href="{{ route('patient.rdvindex')}}">Mes Rendez-Vous</a></li>
                         
                             <li><a class="nav-link" href="{{ route('patient.ordonnanceindex')}}">Mes Ordonnances</a></li>

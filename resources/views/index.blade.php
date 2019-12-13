@@ -84,7 +84,7 @@
   <!--about-->
   <section id="about" class="section-padding">
     <div class="container">
-      <div class="row">
+      <div class="row col-lg-12">
         <div class="col-md-3 col-sm-4 col-xs-12">
           <div class="section-title">
             <h2 class="head-title lg-line">Clinique Hématologie <br></h2>
@@ -93,7 +93,7 @@
             <!-- <a href="" style="color: #0cb8b6; padding-top:10px;">Know more..</a> -->
           </div>
         </div>
-        <div class="col-md-9 col-sm-8 col-xs-12">
+        <div class="col-md-5 col-sm-8 col-xs-12">
           <div style="visibility: visible;" class="col-sm-9 more-features-box">
             <div class="more-features-box-text">
               <div class="more-features-box-text-icon"> <i class="fa fa-angle-right" aria-hidden="true"></i> </div>
@@ -112,9 +112,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="schedule-tab">
-          <div class="col-md-4 col-sm-4 mt-boxy-3">
+        <div class="schedule-tab">
+          <div class="col-md-3 col-sm-8 col-xs-12">
             <div class="mt-boxy-color"></div>
             <div class="time-info">
               <h3>Heures d'Ouverture</h3>
@@ -133,6 +132,9 @@
             </div>
           </div>
         </div>
+
+      </div>
+      
       </div>
     </div>
   </section>
@@ -147,9 +149,10 @@
           <hr class="botm-line">
         </div>
 
+        @foreach ($data as $user)
         <div class="col-md-3 col-sm-3 col-xs-6">
           <div class="thumbnail">
-          @foreach ($data as $user)
+         
             <img src="{{ asset('storage/'.$user->image) }}" alt="..." class="team-img"/>
             <div class="caption">
         
@@ -163,10 +166,11 @@
       @endif
                 </p>
             </div>
-            @endforeach
+           
+            <br>
           </div>
         </div>
-
+        @endforeach
 
 
 

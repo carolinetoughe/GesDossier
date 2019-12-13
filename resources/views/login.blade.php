@@ -1,20 +1,15 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="design/css/style.css">
-
 <body>
-<section id="banner" style="background: url({{asset('design/img/bg-banner.jpg') }}) no-repeat fixed;
-background-size: cover;
-min-height: 650px;
-position: relative;">
+<section id="banner" class="banner">
     
     
 <div class="container">
 
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
-                    <div class="card-header text-primary text-center font-weight-bold" style="font-size: 30px;">{{ __('Connexion Patient') }}</div>
+                    <div class="card-header">{{ __('Connexion') }}</div>
 
                 <div class="box">
                     <div class="shape1"></div>
@@ -25,10 +20,10 @@ position: relative;">
                     <div class="shape6"></div>
                     <div class="shape7"></div>
                     <div class="float">
-                        <form class="form" method="POST" action="{{ route('patient.login') }}">
+                        <form class="form" method="POST" action="{{ route('login') }}">
                                 @csrf
                             <div class="form-group">
-                                <label for="email" class="text-white">E-Mail Patient:</label><br>
+                                <label for="email" class="text-white">E-Mail:</label><br>
                                 <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                         @error('email')
@@ -61,4 +56,4 @@ position: relative;">
     </div>
   </section>
 </body>
-@endsection
+@endsection --}}

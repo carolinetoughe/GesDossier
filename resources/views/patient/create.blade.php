@@ -33,10 +33,26 @@
  <br />
  <br />
 
+
+   <div class="form-group">
+    <label class="col-md-4 text-right">Enter Numero Piece identite</label>
+    <div class="col-md-8">
+     <input type="text" name="pieceidentite" class="form-control input-lg" />
+    </div>
+   </div>
+   <br />
+   <br />
+   <br />
+
  <div class="form-group">
   <label class="col-md-4 text-right">Entrer Sexe</label>
   <div class="col-md-8">
-   <input type="text" name="sexe" class="form-control input-lg" />
+   {{-- <input type="text" name="sexe" class="form-control input-lg" /> --}}
+   <label for="sexe" class="col-md-4 control-label">Sexe :</label>
+   <select name="sexe" id="sexe-select">
+       <option value="feminin">Feminin</option>
+       <option value="masculin">Masculin</option>
+   </select>
   </div>
  </div>
  <br />
@@ -76,7 +92,23 @@
  <div class="form-group">
   <label class="col-md-4 text-right">Enter Groupe Sanguin</label>
   <div class="col-md-8">
-   <input type="text" name="groupesanguin" class="form-control input-lg" />
+   {{-- <input type="text" name="groupesanguin" class="form-control input-lg" /> --}}
+   <label for="groupesanguin" class="col-md-4 control-label">Groupe Sanguin :</label>
+   <select name="groupesanguin" id="groupesanguin-select">
+       <option value="aplus">A+</option>
+       <option value="amoins">A-</option>
+       <option value="bplus">B+</option>
+       <option value="bmoins">B-</option>
+       <option value="abplus">AB+</option>
+       <option value="abmoins">AB-</option>
+       <option value="oplus">O+</option>
+       <option value="omoins">O-</option>
+       <option value="inconnu">Inconnu</option>
+
+
+
+       
+   </select>
   </div>
  </div>
  <br />
@@ -92,6 +124,20 @@
  <br />
  <br />
  <br />
+
+ <div class="form-group">
+    <label for="civilite" class="col-md-4 control-label">Situation Matrimoniale :</label>
+   <select name="civilite" id="civilite-select">
+       <option value="celibataire">Celibataire</option>
+       <option value="marie">Marié(e)</option>
+       <option value="veuf">Veuf ou Veuve</option>
+       <option value="divorce">Divorcée</option>
+
+   </select>
+   </div>
+   <br />
+   <br />
+   <br />
 
  <div class="form-group">
   <label class="col-md-4 text-right">Enter Nom Urgence</label>

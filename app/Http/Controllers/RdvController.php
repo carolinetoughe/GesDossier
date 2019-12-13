@@ -81,16 +81,6 @@ class RdvController extends Controller
         $user = User::where('id', $user_id)->get();
 
 
-//         if(\Notification::send($patient,new RdvNotification(Rdv::latest('id')->first())) )
-// {
-//     if(\Notification::send($user,new RdvNotification(Rdv::latest('id')->first())) )
-//     {
-//             return redirect()->route('rdvs.index')
-//                         ->with('success','nouveau rdv cree.');
-    
-//     }     
-
-// }   
 $collection = collect($patient);
 
 $collection->push($user);

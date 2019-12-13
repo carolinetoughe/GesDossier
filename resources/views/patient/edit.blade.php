@@ -37,6 +37,33 @@
       <br />
       <br />
       <div class="form-group">
+        <label class="col-md-4 text-right">Entrer Dossier</label>
+        <div class="col-md-8">
+         <input type="text" name="dossier" value="{{ $data->dossier }}" class="form-control input-lg" />
+        </div>
+       </div>
+       <br />
+       <br />
+       <br />
+       <div class="form-group">
+        <label class="col-md-4 text-right">Entrer Piece</label>
+        <div class="col-md-8">
+         <input type="text" name="pieceidentite" value="{{ $data->pieceidentite }}" class="form-control input-lg" />
+        </div>
+       </div>
+       <br />
+       <br />
+       <br />
+       <div class="form-group">
+        <label class="col-md-4 text-right">Entrer Civilite</label>
+        <div class="col-md-8">
+         <input type="text" name="nom" value="{{ $data->nom }}" class="form-control input-lg" />
+        </div>
+       </div>
+       <br />
+       <br />
+       <br />
+      <div class="form-group">
        <label class="col-md-4 text-right">Entrer Sexe Patient</label>
        <div class="col-md-8">
         <input type="text" name="sexe" value="{{ $data->sexe }}" class="form-control input-lg" />

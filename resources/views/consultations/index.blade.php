@@ -39,6 +39,7 @@
                     <a class="btn btn-info" href="{{ route('consultations.show',$consultation->id) }}">Afficher Informations</a>
 
 
+
                     @csrf
                     @method('DELETE')
                     @can('consultation-delete')
@@ -47,7 +48,7 @@
                 </form> -->
 
                 <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Plus
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

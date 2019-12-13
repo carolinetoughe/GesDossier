@@ -47,6 +47,9 @@ class PatientsController extends Controller
     {
         $request->validate([
             'nom'    =>  'required',
+           
+            'civilite'    =>  'required',
+            'pieceidentite'    =>  'required',
             'prenom'     =>  'required',
             'sexe'     =>  'required',
             'datenaissance'     =>  'required',
@@ -69,6 +72,10 @@ class PatientsController extends Controller
             'nom'       =>   $request->nom,
             'prenom'        =>   $request->prenom,
             'sexe'        =>   $request->sexe,
+            'civilite'       =>   $request->civilite,
+
+            'pieceidentite'       =>   $request->pieceidentite,
+
             'datenaissance'        =>   $request->datenaissance,
             'adresse'        =>   $request->adresse,
             'nationalite'        =>   $request->nationalite,
@@ -129,6 +136,10 @@ class PatientsController extends Controller
             'nom'    =>  'required',
             'prenom'     =>  'required',
             'sexe'     =>  'required',
+            'dossier'    =>  'required',
+
+            'civilite'    =>  'required',
+            'pieceidentite'    =>  'required',
             'datenaissance'     =>  'required',
             'adresse'     =>  'required',
             'nationalite'     =>  'required',
@@ -150,6 +161,10 @@ class PatientsController extends Controller
  'nom'    =>  'required',
             'prenom'     =>  'required',
             'sexe'     =>  'required',
+            'dossier'    =>  'required',
+
+            'civilite'    =>  'required',
+            'pieceidentite'    =>  'required',
             'datenaissance'     =>  'required',
             'adresse'     =>  'required',
             'nationalite'     =>  'required',
@@ -166,6 +181,10 @@ class PatientsController extends Controller
             'nom'       =>   $request->nom,
             'prenom'        =>   $request->prenom,
             'sexe'        =>   $request->sexe,
+            'dossier'       =>   $request->dossier,
+            'civilite'       =>   $request->civilite,
+
+            'pieceidentite'       =>   $request->pieceidentite,
             'datenaissance'        =>   $request->datenaissance,
             'adresse'        =>   $request->adresse,
             'nationalite'        =>   $request->nationalite,

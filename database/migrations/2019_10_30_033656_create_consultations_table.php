@@ -18,7 +18,6 @@ class CreateConsultationsTable extends Migration
             $table->date('date');
             $table->integer('user_id')->unsigned();;
             $table->integer('patient_id')->unsigned();;
-            $table->integer('service_id')->unsigned();;
             $table->Integer('taille_patient');
             $table->Integer('poids_patient');
             $table->Integer('pression_patient');
@@ -35,11 +34,7 @@ class CreateConsultationsTable extends Migration
             ->references('id')
             ->on('patients')
             ->onDelete('cascade');
-
-            $table->foreign('service_id')
-            ->references('id')
-            ->on('services')
-            ->onDelete('cascade');
+            
         });
     }
 

@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/', 'HomeController@accueil');
 
+Route::get('/compter', 'HomeController@compter');
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
@@ -67,9 +70,9 @@ Route::get('/readRdv/{rdv_id?}','RdvController@readrdv')->name('readRdv');
 Route::get('patient/ficheanalyseindex', 'FicheanalyseController@ficheanalyseindex')->name('patient.ficheanalyseindex');
 Route::get('patient/ficheanalyseshow/{id}', 'FicheanalyseController@ficheanalyseshow')->name('patient.ficheanalyseshow');
 
-
-
 Route::resource('patient','PatientsController');
+Route::resource('antecedents','AntecedentController');
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');

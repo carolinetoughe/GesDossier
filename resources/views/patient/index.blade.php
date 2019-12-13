@@ -14,14 +14,19 @@
 <input type="search" id="myInput" onkeyup="myFunction()" placeholder="Rechercher">
 <table class="table table-bordered table-striped" id="myTable">
  <tr>
-  <th width="10%">Image</th>
-  <th width="35%">Prenom</th>
-  <th width="35%">Nom</th>
-  <th width="30%">Action</th>
+  <th width="10%">Images</th>
+  <th width="15%">Numero Dossier</th>
+  <th width="15%">Numero Piece d'identite</th>
+
+  <th width="15%">Prénoms</th>
+  <th width="15%">Noms</th>
+  <th width="40%">Actions</th>
  </tr>
  @foreach($data as $row)
   <tr>
    <td><img src="{{ URL::to('/') }}/images/{{ $row->image }}" class="img-thumbnail" width="75" /></td>
+   <td>{{ $row->dossier }}</td>
+   <td>{{ $row->pieceidentite }}</td>
    <td>{{ $row->prenom }}</td>
    <td>{{ $row->nom }}</td>
    <td>

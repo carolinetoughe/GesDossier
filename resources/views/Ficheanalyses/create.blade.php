@@ -1,4 +1,4 @@
-@extends('layouts.approle')
+ @extends('layouts.approle')
 
 
 @section('content')
@@ -10,6 +10,7 @@
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('ficheanalyses.index') }}">Retour</a>
             </div>
+            
         </div>
     </div>
 

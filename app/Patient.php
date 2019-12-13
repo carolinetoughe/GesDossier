@@ -16,7 +16,7 @@ class Patient extends Authenticatable
      * @var array
      */
    protected $fillable = [
-        'nom', 'prenom', 'sexe','datenaissance','adresse','nationalite','groupesanguin','numerotelephone','nomurgence','numerourgence','image','email','password',
+        'nom','prenom','civilite','pieceidentite', 'dossier', 'sexe','datenaissance','adresse','nationalite','groupesanguin','numerotelephone','nomurgence','numerourgence','image','email','password',
     ];
     
     /**
@@ -28,6 +28,15 @@ class Patient extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected static function boot(){
+
+        parent::boot();
+
+        self::creating(function($model){
+            
+            $model->dossier = str_random(10);
+        });
+    }
     /**
      * The attributes that should be cast to native types.
      *
@@ -47,6 +56,14 @@ class Patient extends Authenticatable
     public function rdvs()
     {
         return $this->hasMany(Rdv::class);
+    }
+    public function antecedents()
+    {
+        return $this->hasMany(Antecedent::class);
+    }
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
     }
 
 

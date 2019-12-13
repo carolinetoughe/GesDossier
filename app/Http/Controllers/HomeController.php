@@ -33,5 +33,11 @@ class HomeController extends Controller
         $data = User::get();
         return view('index',compact('data'));
     }
+    public function compter()
+    {
+        $nbr = User::get()->count();
+        return view('\layouts\approle',compact('nbr'));
+
+    }
     
 }

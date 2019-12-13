@@ -14,7 +14,7 @@ class Consultation extends Model
      * @var array
      */
     protected $fillable = [
-        'date','user_id','patient_id','service_id','taille_patient','poids_patient','pression_patient','motif', 'diagnostique'
+        'date','user_id','patient_id','taille_patient','poids_patient','pression_patient','motif', 'diagnostique'
     ];
     public function user()
 {

@@ -10,7 +10,7 @@ use App\Patient;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Notification;
 
 class ConsultationController extends Controller
 { 
@@ -66,7 +66,6 @@ class ConsultationController extends Controller
             'date' => 'required',
             'user_id' => 'required',
             'patient_id' => 'required',
-            'service_id' => 'required',
             'pression_patient' => 'required',
             'poids_patient' => 'required',
             'taille_patient' => 'required',
@@ -77,7 +76,6 @@ class ConsultationController extends Controller
             'date'       =>   $request->date,
             'user_id'        =>   $request->user_id,
             'patient_id'        =>   $request->patient_id,
-            'service_id'        =>   $request->service_id,
             'pression_patient'        =>   $request->pression_patient,
             'poids_patient'        =>   $request->poids_patient,
             'taille_patient'        =>   $request->taille_patient,
@@ -86,11 +84,12 @@ class ConsultationController extends Controller
             'diagnostique'        =>   $request->diagnostique
         );
 
-        Consultation::create($form_data);
+        $con= Consultation::create($form_data);
         $patient_id = $request->patient_id;
         $patient = Patient::where('id', $patient_id)->get();
         // Notification::send($patient,new ConsultationNotification(Consultation::latest('id')->first()));
 
+        Notification::send($patient,new ConsultationNotification($con));
 
 //         if(\Notification::send($patient,new ConsultationNotification(Consultation::latest('id')->first())))
 // {
