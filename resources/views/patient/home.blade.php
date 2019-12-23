@@ -136,8 +136,8 @@ p {
 
 .user-image {
 	position: absolute;
-	height: 80px;
-	width: 80px;
+	height: 50px;
+	width: 50px;
 	border-radius: 50%;
 	bottom: -50%;
 	left: 50%;
@@ -285,10 +285,10 @@ a.about-item-edit {
 
 								<div class="profile-header">
 
-                                    {{-- <img src="{{ URL::to('/') }}/images/{{ $patient->image }}"width="100" height="80"  class="img-thumbnail" /> --}}
+                                    
 								
 									<div class="user-image">
-									<img src="{{ URL::to('/') }}/images/{{ $patient->image }}" class="img ">
+									{{-- <img src="{{ URL::to('/') }}/images/{{ $patient->image }}" class="img "> --}}
 									</div>
 								</div>
 
@@ -307,7 +307,7 @@ a.about-item-edit {
 					<div class="col-md-8 grid-margin stretch-card">
 						<div class="card">
 							<div class="card-body">
-								<p class="card-title font-weight-bold"><a href="" class="about-item-edit">Edit</a>About</p>
+								<p class="card-title font-weight-bold"><a href="{{ route('patient.editinfo', $patient->id) }}" class="about-item-edit">Modifier Informations</a></p>
                                 <hr>
                                 <p class="card-description">Informations De Base</p>
 								<ul class="about">
@@ -318,7 +318,7 @@ a.about-item-edit {
 									<li class="about-items"><i class="mdi mdi-cake icon-sm "></i><span class="about-item-name">Anniversaire:</span><span class="about-item-detail">{{ $patient->datenaissance }}</span></li>
 									<li class="about-items"><i class="mdi mdi-account icon-sm "></i><span class="about-item-name">Sexe:</span><span class="about-item-detail">{{ $patient->sexe }}</span> </li>
 									<li class="about-items"><i class="mdi mdi-clipboard-account icon-sm "></i><span class="about-item-name">Nationalite:</span><span class="about-item-detail">{{ $patient->nationalite }}</span> </li>
-									<li class="about-items"><i class=" "></i><span class="about-item-name">Groupe Sanguin:</span><span class="about-item-detail">{{ $patient->groupesanguin }}</span></li>
+									{{-- <li class="about-items"><i class=" "></i><span class="about-item-name">Groupe Sanguin:</span><span class="about-item-detail">{{ $patient->groupesanguin }}</span></li> --}}
 									<li class="about-items"><i class="mdi mdi-human-male-female icon-sm "></i><span class="about-item-name">Situation Matrimoniale:</span><span class="about-item-detail"></span>{{ $patient->civilite }}</li>
 								</ul>
 								

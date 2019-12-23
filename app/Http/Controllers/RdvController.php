@@ -62,13 +62,13 @@ class RdvController extends Controller
     {
         $request->validate([
             'date' => 'required',
-            'code' => 'required',
+           
             'patient_id' => 'required',
             'user_id' => 'required',
         ]);
         $form_data = array(
             'date'       =>   $request->date,
-            'code'        =>   $request->code,
+            
             'patient_id'        =>   $request->patient_id,
             'user_id'        =>   $request->user_id,
 
@@ -131,7 +131,7 @@ return redirect()->route('rdvs.index')
     {
         $this->validate($request, [
             'date' => 'required',
-            'code' => 'required',
+            
             'patient_id' => 'required',
             'user_id' => 'required',
         ]);
@@ -179,11 +179,17 @@ return redirect()->route('rdvs.index')
 
         
     }
+    public function createp()
+    {
+        $users = User::get();
+       $patient = Auth::guard('patient')->User();
+        return view('rdvs.createp',compact('patients','users'));
+    }
     public function readrdv($rdv_id)
     {
-        // $patient = Auth::guard('patient')->User();
+        
         // $consultations = $patient->consultations()->get();
-        $rdvs = Rdv::find($rdv_id);
+        // $rdvs = Rdv::find($rdv_id);
          
         return view('patient/rdvindex',compact('rdvs'));
     }

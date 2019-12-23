@@ -73,6 +73,8 @@ Route::get('patient/ficheanalyseshow/{id}', 'FicheanalyseController@ficheanalyse
 Route::resource('patient','PatientsController');
 Route::resource('antecedents','AntecedentController');
 
+Route::get('/patient/{rdv}/create', 'RdvController@createp')->name('createp');
+Route::post('/patient/{rdv}/create', 'RdvController@store');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');

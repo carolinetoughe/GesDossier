@@ -18,6 +18,15 @@
                 @csrf
                 @method('PATCH')
       <div class="form-group">
+        <div class="form-group">
+            <label class="col-md-4 text-right">Votre Numero de Dossier</label>
+            <div class="col-md-8">
+             <input type="text" name="dossier" value="{{ $data->dossier }}" class="form-control input-lg" />
+            </div>
+           </div>
+           <br />
+           <br />
+           <br />
        <label class="col-md-4 text-right">Entrer Prenom</label>
        <div class="col-md-8">
         <input type="text" name="prenom" value="{{ $data->prenom }}" class="form-control input-lg" />
@@ -36,9 +45,19 @@
       <br />
       <br />
       <div class="form-group">
+        <label class="col-md-4 text-right">Entrer Numero Piece identite</label>
+        <div class="col-md-8">
+         <input type="text" name="pieceidentite" value="{{ $data->pieceidentite }}" class="form-control input-lg" />
+        </div>
+       </div>
+       <br />
+       <br />
+       <br />
+      <div class="form-group">
        <label class="col-md-4 text-right">Entrer Sexe Patient</label>
        <div class="col-md-8">
         <input type="text" name="sexe" value="{{ $data->sexe }}" class="form-control input-lg" />
+     
        </div>
       </div>
       <br />
@@ -89,6 +108,15 @@
       <br />
       <br />
       <br />
+      <div class="form-group">
+        <label class="col-md-4 text-right">Entrer Situation Matrimoniale</label>
+        <div class="col-md-8">
+         <input type="text" name="civilite" value="{{ $data->civilite }}" class="form-control input-lg" />
+        </div>
+       </div>
+       <br />
+       <br />
+       <br />
       <div class="form-group">
        <label class="col-md-4 text-right">Entrer Nom Urgence</label>
        <div class="col-md-8">

@@ -21,7 +21,7 @@
 
 <table class="table table-bordered table-striped">
  <tr>
-  <th width="10%">Code</th>
+  
   <th width="35%">Date</th>
   <th width="35%">Nom Patient</th>
   <th width="35%">Nom Medecin</th>
@@ -30,7 +30,7 @@
  </tr>
  @foreach($rdvs as $rdv)
   <tr>
-  <td>{{ $rdv->code}}</td>
+  
    <td>{{ $rdv->date }}</td>
    <td>{{ $rdv->patient->nom }}</td>
    <td>{{ $rdv->user->name }}</td>
@@ -41,7 +41,9 @@
                     <a href="{{ route('rdvs.edit', $rdv->id) }}" class="btn btn-warning">Modifier</a>
                     @csrf
                     @method('DELETE')
+                    @can('rdv-delete',Rdv::class)
                     <button type="submit" class="btn btn-danger">Supprimer</button>
+                    @endcan
                 </form>
 	        </td>
   </tr>

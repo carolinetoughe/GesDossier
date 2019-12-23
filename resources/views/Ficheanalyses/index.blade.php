@@ -6,9 +6,7 @@
             <div class="pull-left">
                 <h2> Gestion Fiches Analyses</h2>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('ficheanalyses.create') }}">Creer Nouvelle Fiche Analyse</a>
-            </div>
+           
         </div>
     </div>
 
@@ -34,10 +32,10 @@
             <td>{{ $ficheanalyse->consultation->patient->nom }}</td>
 	        <td>
                 <form action="{{ route('ficheanalyses.destroy',$ficheanalyse->id) }}" method="POST">
-                <!-- @can('disponibilite-edit',Disponibilite::class) -->
+                <!-- @can('bonanalyse-edit',FicheAnalyse::class) -->
                     <a class="btn btn-info" href="{{ route('ficheanalyses.show',$ficheanalyse->id) }}">Afficher Informations</a>
                 <!-- @endcan -->
-                <!-- @can('disponibilite-delete',Disponibilite::class) -->
+                <!-- @can('bonanalyse-delete',FicheAnalyse::class) -->
                     <a href="{{ route('ficheanalyses.edit', $ficheanalyse->id) }}" class="btn btn-warning">Modifier</a>
                 <!-- @endcan -->
 

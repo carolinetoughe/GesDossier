@@ -13,7 +13,8 @@
         <div class="card-body">
                     <img src="{{ asset('storage/'.$user->image) }}"width="100" height="80"  class="img-thumbnail" />
                         
-            <h5 class="card-title">Coordonnées </h5>
+                    <a class="btn btn-warning" href="{{ route('users.edit',$user->id) }}">{{ __('Modifier Informmations') }}</a></li>
+
             <table class="table">
                 <tbody>
     <br>

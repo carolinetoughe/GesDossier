@@ -1,18 +1,14 @@
-@extends('layouts.approle')
+@extends('layouts.apppatient')
 
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Creer Nouveau Rendez-vous</h2>
+                <h2>Prendre Nouveau Rendez-vous</h2>
 
             </div>
-            <div class="pull-right">
-                @can('rdv-list',Rdv::class)
-                <a class="btn btn-primary" href="{{ route('rdvs.index') }}">Retour</a>
-                @endcan
-            </div>
+
         </div>
     </div>
 
@@ -40,18 +36,13 @@
 		            <input type="date" name="date" class="form-control">
 		        </div>
             </div>
-           
+            
 		   
     <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="form-group">
-                            <label for="patient_id" class="col-md-4 control-label">Nom Patient :</label>
-                            
-                                <select name="patient_id" class="form-control">
-                                    @foreach($patients as $patient)
-                                        <option value="{{ $patient->id }}">{{ $patient->nom }}</option>
-                                    @endforeach
-                                </select>
-                        
+        
+            <input  type="text" name="patient_id" class="form-control" hidden value="{{$patients->id}}">
+                  
     </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">

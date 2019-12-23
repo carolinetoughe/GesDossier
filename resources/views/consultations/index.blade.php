@@ -7,7 +7,10 @@
                 <h2> Gestion consultations</h2>
             </div>
             <div class="pull-right">
+
+                @can('consultation-create',consultation::class)
                 <a class="btn btn-success" href="{{ route('consultations.create') }}">Creer Nouvelle consultation</a>
+                @endcan
             </div>
         </div>
     </div>

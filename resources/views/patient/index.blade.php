@@ -32,12 +32,13 @@
    <td>
     <a href="{{ route('patient.show', $row->id) }}" class="btn btn-primary">Voir Plus</a>
     {{-- <a href="{{ route('patient.edit', $row->id) }}" class="btn btn-warning">Modifier</a> --}}
-    <form id="deleteForm-{{$row->id }}" method="POST" action="{{ route('patient.destroy', $row->id) }}" style="display:none;">
-    {{csrf_field()}}
-    {{method_field('delete')}}
-    </form>
-    <button onclick="delete_stud()">Supprimer</button> </td>
-   </td>
+    @can('patient-delete',Patient::class)
+    {!! Form::open(['method' => 'DELETE','route' => ['patient.destroy', $row->id],'style'=>'display:inline']) !!}
+                    {!! Form::submit('Supprimer', ['class' => 'btn btn-danger']) !!}
+                {!! Form::close() !!}
+                @endcan
+    </td>
+  
   </tr>
  @endforeach
 </table>

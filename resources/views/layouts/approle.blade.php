@@ -79,6 +79,7 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                         @else
+                        <li><a class="nav-link" href="{{ route('home') }}">{{ __('Mon Profil') }}</a></li>
                         
                             <li class="nav-item dropdown">
                     

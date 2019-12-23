@@ -24,30 +24,21 @@
                 {{ $ficheanalyse->consultation->user->name }}
             </div>
         </div>
-        
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>mardi:</strong>
-                {{ $disponibilites->mardi }}
+                <strong>Nom Patient:</strong>
+                {{ $ficheanalyse->consultation->patient->nom }}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>mercredi:</strong>
-                {{ $disponibilites->mercredi }}
+                <strong>Analyses:</strong>
+                @if(!empty($rolePermissions))
+                    @foreach($rolePermissions as $v)
+                        <label class="label label-success">{{ $v->nom }}: {{ $v->prix }} </label>
+                    @endforeach
+                @endif
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>jeudi:</strong>
-                {{ $disponibilites->jeudi }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>vendredi:</strong>
-                {{ $disponibilites->vendredi }}
-            </div>
-        </div>
-    </div>
+       
 @endsection

@@ -86,7 +86,11 @@ class FicheanalyseController extends Controller
      */
     public function show($id)
     {
-        //
+        $ficheanalyse = Ficheanalyse::findOrFail($id);
+        $rolePermissions = Analyse::join("analyse_ficheanalyse","analyse_ficheanalyse.analyse_id","=","analyses.id")
+        ->where("analyse_ficheanalyse.ficheanalyse_id",$id)
+        ->get();
+        return view('ficheanalyses.show',compact('ficheanalyse','rolePermissions'));
     }
 
     /**

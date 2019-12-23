@@ -135,6 +135,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $path = $request->hidden_image;
+        $image = $request->file('image');
+        if($image != '')
+        {
+        $this->validate($request, [
+            'name' => 'required',
+            'prenom' => 'required',
+            'adresse' => 'required',
+            'numerotelephone' => 'required',
+            'image' => 'required',
+            'roles' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'password' => 'same:confirm-password',
+        ]);
+        $path = $image->update('utiilisateurs', 'public');
+        $input['image'] = $path;
+
+        
+        }else
+        {
         $this->validate($request, [
             'name' => 'required',
             'prenom' => 'required',
@@ -144,9 +164,9 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
         ]);
-
-
+    }
         $input = $request->all();
+           
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{

@@ -28,12 +28,7 @@
 
 {!! Form::model($rdvs, ['method' => 'PATCH','route' => ['rdvs.update', $rdvs->id]]) !!}
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <strong>Code:</strong>
-            {!! Form::text('code', null, array('placeholder' => 'Code','class' => 'form-control')) !!}
-        </div>
-    </div>
+    
     <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Date:</strong>

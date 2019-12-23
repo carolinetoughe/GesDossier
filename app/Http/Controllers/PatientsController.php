@@ -136,8 +136,6 @@ class PatientsController extends Controller
             'nom'    =>  'required',
             'prenom'     =>  'required',
             'sexe'     =>  'required',
-            'dossier'    =>  'required',
-
             'civilite'    =>  'required',
             'pieceidentite'    =>  'required',
             'datenaissance'     =>  'required',
@@ -161,8 +159,6 @@ class PatientsController extends Controller
  'nom'    =>  'required',
             'prenom'     =>  'required',
             'sexe'     =>  'required',
-            'dossier'    =>  'required',
-
             'civilite'    =>  'required',
             'pieceidentite'    =>  'required',
             'datenaissance'     =>  'required',

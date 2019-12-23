@@ -70,7 +70,9 @@
             <div class="banner-text text-center">
               <h1 class="red">Votre dossier médical à portée de main</h1>
               <p>Bienvenue à la Clinique Hématologie du CNTS<br>.</p>
-              <a href="#contact" class="btn btn-appoint">Prendre Un Rendez-vous.</a>
+              
+              {{-- <a href="{{ route('createp') }}" class="btn btn-appoint">Prendre Un Rendez-vous.</a> --}}
+
             </div>
             <div class="overlay-detail text-center">
               <a href="#service"><i class="fa fa-angle-down"></i></a>

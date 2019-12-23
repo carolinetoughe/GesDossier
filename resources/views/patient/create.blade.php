@@ -1,6 +1,7 @@
-@extends('patient/parent')
+@extends('layouts.approle')
 
-@section('main')
+
+@section('content')
 @if($errors->any())
 <div class="alert alert-danger">
  <ul>
@@ -15,7 +16,7 @@
 
  @csrf
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Prenom Name</label>
+  <label class="col-md-4 text-right">Entrer Prenom(s)</label>
   <div class="col-md-8">
    <input type="text" name="prenom" class="form-control input-lg" />
   </div>
@@ -24,7 +25,7 @@
  <br />
  <br />
  <div class="form-group">
-  <label class="col-md-4 text-right">Entrer nom</label>
+  <label class="col-md-4 text-right">Entrer nom(s)</label>
   <div class="col-md-8">
    <input type="text" name="nom" class="form-control input-lg" />
   </div>
@@ -35,7 +36,7 @@
 
 
    <div class="form-group">
-    <label class="col-md-4 text-right">Enter Numero Piece identite</label>
+    <label class="col-md-4 text-right">Entrer Numero Piece identite</label>
     <div class="col-md-8">
      <input type="text" name="pieceidentite" class="form-control input-lg" />
     </div>
@@ -47,8 +48,7 @@
  <div class="form-group">
   <label class="col-md-4 text-right">Entrer Sexe</label>
   <div class="col-md-8">
-   {{-- <input type="text" name="sexe" class="form-control input-lg" /> --}}
-   <label for="sexe" class="col-md-4 control-label">Sexe :</label>
+  
    <select name="sexe" id="sexe-select">
        <option value="feminin">Feminin</option>
        <option value="masculin">Masculin</option>
@@ -60,7 +60,7 @@
  <br />
 
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Date Naissance</label>
+  <label class="col-md-4 text-right">Entrer Date Naissance</label>
   <div class="col-md-8">
    <input type="date" name="datenaissance" class="form-control input-lg" />
   </div>
@@ -70,7 +70,7 @@
  <br />
 
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Adresse</label>
+  <label class="col-md-4 text-right">Entrer Adresse</label>
   <div class="col-md-8">
    <input type="text" name="adresse" class="form-control input-lg" />
   </div>
@@ -80,7 +80,7 @@
  <br />
 
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Nationalite</label>
+  <label class="col-md-4 text-right">Entrer Nationalite</label>
   <div class="col-md-8">
    <input type="text" name="nationalite" class="form-control input-lg" />
   </div>
@@ -90,20 +90,20 @@
  <br />
 
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Groupe Sanguin</label>
+  <label class="col-md-4 text-right">Entrer Groupe Sanguin</label>
   <div class="col-md-8">
    {{-- <input type="text" name="groupesanguin" class="form-control input-lg" /> --}}
    <label for="groupesanguin" class="col-md-4 control-label">Groupe Sanguin :</label>
    <select name="groupesanguin" id="groupesanguin-select">
-       <option value="aplus">A+</option>
-       <option value="amoins">A-</option>
-       <option value="bplus">B+</option>
-       <option value="bmoins">B-</option>
-       <option value="abplus">AB+</option>
-       <option value="abmoins">AB-</option>
-       <option value="oplus">O+</option>
-       <option value="omoins">O-</option>
-       <option value="inconnu">Inconnu</option>
+       <option value="A+">A+</option>
+       <option value="A-">A-</option>
+       <option value="B+">B+</option>
+       <option value="B-">B-</option>
+       <option value="AB+">AB+</option>
+       <option value="AB-">AB-</option>
+       <option value="O+">O+</option>
+       <option value="O-">O-</option>
+       <option value="Inconnu">Inconnu</option>
 
 
 
@@ -126,7 +126,7 @@
  <br />
 
  <div class="form-group">
-    <label for="civilite" class="col-md-4 control-label">Situation Matrimoniale :</label>
+    <label for="civilite" class="col-md-4 text-right">Situation Matrimoniale :</label>
    <select name="civilite" id="civilite-select">
        <option value="celibataire">Celibataire</option>
        <option value="marie">Marié(e)</option>
@@ -140,7 +140,7 @@
    <br />
 
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Nom Urgence</label>
+  <label class="col-md-4 text-right">Entrer Nom Urgence</label>
   <div class="col-md-8">
    <input type="text" name="nomurgence" class="form-control input-lg" />
   </div>
@@ -150,7 +150,7 @@
  <br />
 
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Numero Urgence</label>
+  <label class="col-md-4 text-right">Entrer Numero Urgence</label>
   <div class="col-md-8">
    <input type="text" name="numerourgence" class="form-control input-lg" />
   </div>
@@ -159,7 +159,7 @@
  <br />
  <br />
  <div class="form-group">
-  <label class="col-md-4 text-right">Enter Email</label>
+  <label class="col-md-4 text-right">Entrer Email</label>
   <div class="col-md-8">
    <input type="email" name="email" class="form-control input-lg" />
   </div>
@@ -184,7 +184,7 @@
  <br />
  <br />
  <div class="form-group">
-  <label class="col-md-4 text-right">Select Profile Image</label>
+  <label class="col-md-4 text-right">Selectionner Image Temporaire</label>
   <div class="col-md-8">
    <input type="file" name="image" />
   </div>

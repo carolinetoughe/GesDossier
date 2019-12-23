@@ -7,7 +7,9 @@
             <h2>Gestion Des Analyses</h2>
         </div>
         <div class="pull-right">
+            @can('analyse-create',Analyse::class)
             <a class="btn btn-success" href="{{ route('analyses.create') }}"> Creer Nouvelle Analyse</a>
+            @endcan
         </div>
     </div>
 </div>
@@ -33,11 +35,14 @@
    <td>{{ $analyse->prix }}</td>
    <td>
                 <form action="{{ route('analyses.destroy',$analyse->id) }}" method="POST">
-               
+                    @can('analyse-dit',Analyse::class)
                     <a href="{{ route('analyses.edit', $analyse->id) }}" class="btn btn-warning">Modifier</a>
+                    @endcan
                     @csrf
                     @method('DELETE')
+                    @can('analyse-delete',Analyse::class)
                     <button type="submit" class="btn btn-danger">Supprimer</button>
+                    @endcan
                 </form>
 	        </td>
   </tr>

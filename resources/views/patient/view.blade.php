@@ -1,7 +1,7 @@
-@extends('patient/parent')
+@extends('layouts.approle')
 
-@section('main')
 
+@section('content')
 <div class="jumbotron text-center">
  <div align="right">
   <a href="{{ route('patient.liste') }}" class="btn btn-default">Retour</a>
